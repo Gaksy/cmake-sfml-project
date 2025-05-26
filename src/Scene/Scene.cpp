@@ -1,4 +1,4 @@
-#include "include/Scene/Scene.h"
+#include "Scene/Scene.h"
 
 #include <utility>
 #include <SFML/Graphics/Text.hpp>

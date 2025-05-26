@@ -14,10 +14,11 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(${PROJECT_NAME}
         src/main.cpp
-        src/Scene.cpp
-        src/include/Scene/Scene.h
-        src/MenuScene.cpp
-        src/include/Scene/MenuScene.h
+        src/Scene/Scene.cpp
+        src/Scene/MenuScene.cpp
+        src/Scene/GameScene.cpp
+        src/Scene/SceneManager.cpp
+        src/Scene/SelectorScene.cpp
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)

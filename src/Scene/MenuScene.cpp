@@ -1,8 +1,10 @@
-#include "include/Scene/MenuScene.h"
+#include "Scene/MenuScene.h"
 
 #include <cstdio>
 
-#include "SFML/Graphics/Text.hpp"
+#include "Scene/SceneManager.h"
+
+extern SceneManager game_scene_manager;
 
 MenuScene::MenuScene(const sf::Font& font, sf::RenderWindow* p_window):
     Scene(font, p_window, L"菜单场景")
@@ -18,7 +20,7 @@ void MenuScene::onExit()
     printf("退出主菜单场景\n");
 }
 
-void MenuScene::update()
+void MenuScene::onUpdate()
 {
     printf("正在运行主菜单场景...\n");
 }
@@ -30,4 +32,7 @@ void MenuScene::onDraw()
 
 void MenuScene::onInput(const sf::Event& event)
 {
+    if (event.is<sf::Event::KeyPressed>()){
+        game_scene_manager.switchToScene(SceneManager::SceneType::GAME);
+    }
 }

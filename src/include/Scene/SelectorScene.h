@@ -1,5 +1,5 @@
-#ifndef MENUSCENE_H
-#define MENUSCENE_H
+#ifndef SECECTORSCENE_H
+#define SECECTORSCENE_H
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
@@ -7,10 +7,10 @@
 
 #include "Scene/Scene.h"
 
-class MenuScene: public Scene{
+class SelectorScene: public Scene {
 public:
-    MenuScene(const sf::Font& font, sf::RenderWindow* p_window);
-    ~MenuScene() override=default;
+    SelectorScene(const sf::Font& font, sf::RenderWindow* p_window);
+    ~SelectorScene() override=default;
 
 public:
     void onEnter()override;
@@ -20,6 +20,4 @@ public:
     void onInput(const sf::Event& event)override;
 };
 
-
-
-#endif //MENUSCENE_H
+#endif //SECECTORSCENE_H

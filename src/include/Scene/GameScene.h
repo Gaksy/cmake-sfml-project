@@ -1,16 +1,17 @@
-#ifndef MENUSCENE_H
-#define MENUSCENE_H
+#ifndef GAMESCENE_H
+#define GAMESCENE_H
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "Scene/Scene.h"
+#include "Scene.h"
 
-class MenuScene: public Scene{
+class GameScene : public Scene
+{
 public:
-    MenuScene(const sf::Font& font, sf::RenderWindow* p_window);
-    ~MenuScene() override=default;
+    GameScene(const sf::Font& font, sf::RenderWindow* p_window);
+    ~GameScene() override;
 
 public:
     void onEnter()override;
@@ -21,5 +22,4 @@ public:
 };
 
 
-
-#endif //MENUSCENE_H
+#endif //GAMESCENE_H

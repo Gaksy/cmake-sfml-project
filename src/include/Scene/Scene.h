@@ -1,8 +1,9 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "SFML/Graphics/Font.hpp"
-#include "SFML/Graphics/RenderWindow.hpp"
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 class Scene {
 public:
@@ -13,7 +14,7 @@ public:
     virtual void onEnter()=0;
     virtual void onExit()=0;
 
-    virtual void update()=0;
+    virtual void onUpdate()=0;
     virtual void onDraw()=0;
     virtual void onInput(const sf::Event& event)=0;
 
