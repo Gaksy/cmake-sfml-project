@@ -12,6 +12,21 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(main src/main.cpp)
-target_compile_features(main PRIVATE cxx_std_17)
-target_link_libraries(main PRIVATE SFML::Graphics)
+add_executable(${PROJECT_NAME}
+        src/main.cpp
+        src/Scene.cpp
+        src/include/Scene/Scene.h
+        src/MenuScene.cpp
+        src/include/Scene/MenuScene.h
+)
+target_include_directories(${PROJECT_NAME} PUBLIC src/include)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
+# 假设你的资源目录名为 "resources"，位于项目根目录
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
+)
