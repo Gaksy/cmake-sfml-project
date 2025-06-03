@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
 project(CMakeSFMLProject LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include(FetchContent)
@@ -19,11 +21,14 @@ add_executable(${PROJECT_NAME}
         src/Scene/GameScene.cpp
         src/Scene/SceneManager.cpp
         src/Scene/SelectorScene.cpp
+        src/ResourcesUnit/Atlas.cpp
+        src/ResourcesUnit/ResourcesUtils.cpp
+        src/ResourcesUnit/Animation.cpp
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
-# 假设你的资源目录名为 "resources"，位于项目根目录
+
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin)
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

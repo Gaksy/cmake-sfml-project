@@ -17,8 +17,9 @@ int main()
     sf::RenderWindow window(sf::VideoMode({1920u, 1080u}), "Test", sf::Style::Close);
     window.setFramerateLimit(60);
 
-    sf::Color backgroundColor = sf::Color::White;
-    sf::Font font("resources/font_file/NISC18030.ttf");
+    constexpr sf::Color backgroundColor = sf::Color::White;
+    const sf::Font font("resources/font_file/NISC18030.ttf");
+
     p_menu_scene = new MenuScene(font, &window);
     p_selector_scene = new SelectorScene(font, &window);
     p_game_scene = new GameScene(font, &window);

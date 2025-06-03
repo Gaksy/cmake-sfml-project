@@ -1,0 +1,42 @@
+#ifndef ANIMATION_H
+#define ANIMATION_H
+
+#include <mach/processor.h>
+
+#include "ResourcesUnit/Atlas.h"
+
+namespace sf
+{
+    class RenderWindow;
+}
+
+class Animation {
+public:
+    Animation() = default;
+    ~Animation() = default;
+
+public:
+    void reset();
+    void setAtlas(Atlas* atlas);
+    void setLoop(bool loop);
+    void setInterval(size_t ms);
+    void setCallBack(std::function<void()> callback);
+    [[nodiscard]] size_t getIndexFrame() const;
+    [[nodiscard]] const sf::Texture* getCurrentFrame() const;
+    [[nodiscard]] bool checkFinished() const;
+
+    void onUpdate(size_t delta);
+    void onDraw(float x, float y)const;
+
+private:
+    size_t timer_;
+    size_t interval_;
+    size_t index_frame_;
+    bool is_loop_;
+    Atlas* atlas_;
+    std::function<void()> callback_;
+
+    sf::RenderWindow* p_window_;
+};
+
+#endif //ANIMATION_H
