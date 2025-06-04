@@ -7,14 +7,14 @@
 class Atlas {
 public:
     Atlas()=default;
-    explicit Atlas(const wchar_t* path_template, size_t num);
+    explicit Atlas(const char* path_template, size_t num);
     ~Atlas() = default;
 
 public:
     const sf::Texture* operator[](size_t frame_index) const;
 
 public:
-    void loadFromFile(const wchar_t* path_template, size_t num);
+    void loadFromFile(const char* path_template, size_t num);
     [[nodiscard]] const sf::Texture* getFrameImage(size_t frame_index)const;
     [[nodiscard]] size_t getFrameImageSize()const;
     void addFrameImage(const sf::Texture& texture);

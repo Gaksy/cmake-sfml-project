@@ -4,10 +4,11 @@
 #include <SFML/Graphics/Texture.hpp>
 
 #include "ResourcesUnit/Atlas.h"
+#include "SFML/Audio/SoundBuffer.hpp"
 
-
-void flipImage(sf::Texture* src_image, sf::Texture* dst_image);
-void flipAtlas(const Atlas& src_atlas, Atlas& dst_atlas);
-
+void flipTextureHorizontally(const sf::Texture* original, sf::Texture* destination);
+void flipAtlasHorizontally(const Atlas& original, Atlas& destination);
+void loadTextureFromFile(sf::Texture* texture, const char* path_file);
+void loadSoundFromFile(sf::SoundBuffer* soundBuffer, const char* path_file);
 
 #endif //RESOURCESUTIL_H

@@ -27,7 +27,7 @@ add_executable(${PROJECT_NAME}
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Audio)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin)

@@ -1,6 +1,6 @@
 #include "../include/ResourcesUnit/Atlas.h"
 
-Atlas::Atlas(const wchar_t* path_template, const size_t num) {
+Atlas::Atlas(const char* path_template, const size_t num) {
     loadFromFile(path_template, num);
 }
 
@@ -27,18 +27,20 @@ const sf::Texture* Atlas::operator[](const size_t frame_index) const{
     return getFrameImage(frame_index);
 }
 
-void Atlas::loadFromFile(const wchar_t* path_template, size_t num)
+void Atlas::loadFromFile(const char* path_template, size_t num)
 {
     img_list_.clear();
     img_list_.resize(num);
 
     constexpr size_t BUFFER_SIZE = 256;
-    wchar_t filepath[BUFFER_SIZE];
-
-    for (size_t i = 0; i < num; ++i) {
-        swprintf(filepath, BUFFER_SIZE, path_template, i);
-        if (!img_list_[i].loadFromFile(filepath)) {
-            fprintf(stderr, "load file error: %ls\n", filepath);
+    char filepath[BUFFER_SIZE];
+    for (char& ch: filepath) {
+        ch = '\0';
+    }
+    for (size_t i = 1; i <= num; ++i) {
+        snprintf(filepath, BUFFER_SIZE, path_template, i);
+        if (!img_list_[i - 1].loadFromFile(filepath)) {
+            fprintf(stderr, "load file error: %s\n", filepath);
         }
     }
 }
