@@ -1,6 +1,6 @@
-#include "../include/Util/Camera.h"
+#include "Util/Camera.h"
 
-#include "SFML/Window/Mouse.hpp"
+#include <SFML/Window/Mouse.hpp>
 
 Camera::Camera():
     position_({0,0}),
@@ -35,8 +35,7 @@ void Camera::onUpdate(const size_t delta){
     }
 }
 
-void Camera::shake(const float strength, const size_t duration)
-{
+void Camera::shake(const float strength, const size_t duration) {
     is_shaking_ = true;
     shaking_strength_ = strength;
 

@@ -1,11 +1,10 @@
 #include "Scene/MenuScene.h"
 
-#include <cstdio>
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 
 #include "Scene/SceneManager.h"
-#include "SFML/Audio/Sound.hpp"
-#include "SFML/Graphics/RectangleShape.hpp"
-#include "SFML/System/Sleep.hpp"
+
 
 extern SceneManager game_scene_manager;
 extern sf::Texture img_menu_background;
@@ -17,9 +16,7 @@ MenuScene::MenuScene(const sf::Font& font, sf::RenderWindow* p_window):
     animation_peashooter_run_right_(p_window),
     p_sound_background_bgm_(nullptr),
     p_sound_ui_confirm_(nullptr)
-{
-
-}
+{ ; }
 
 void MenuScene::onEnter() {
     resetSound(p_sound_background_bgm_, sound_bgm_menu, true, true);
@@ -32,6 +29,7 @@ void MenuScene::onExit() {
 }
 
 void MenuScene::onUpdate(const size_t delta) {
+
 }
 
 void MenuScene::onDraw(const Camera& camera) {

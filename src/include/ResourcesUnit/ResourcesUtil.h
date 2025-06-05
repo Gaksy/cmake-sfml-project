@@ -2,9 +2,10 @@
 #define RESOURCESUTIL_H
 
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 #include "ResourcesUnit/Atlas.h"
-#include "SFML/Audio/SoundBuffer.hpp"
+
 
 void flipTextureHorizontally(const sf::Texture* original, sf::Texture* destination);
 void flipAtlasHorizontally(const Atlas& original, Atlas& destination);

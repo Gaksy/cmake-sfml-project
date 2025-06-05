@@ -1,4 +1,4 @@
-#include "../include/Util/Timer.h"
+#include "Util/Timer.h"
 
 #include <utility>
 
@@ -8,11 +8,9 @@ Timer::Timer():
     paused_(false),
     shotted_(false),
     one_shot_(false)
-{
-}
+{ ; }
 
-void Timer::onUpdate(const size_t delta)
-{
+void Timer::onUpdate(const size_t delta) {
     if (paused_) { return; }
     pass_time_ += delta;
     if (pass_time_ >= wait_time_)
@@ -26,33 +24,27 @@ void Timer::onUpdate(const size_t delta)
     }
 }
 
-void Timer::setCallback(std::function<void()> callback)
-{
+void Timer::setCallback(std::function<void()> callback) {
     callback_ = std::move(callback);
 }
 
-void Timer::restart()
-{
+void Timer::restart() {
     shotted_ = false;
     pass_time_ = 0;
 }
 
-void Timer::setWaitTime(const size_t val)
-{
+void Timer::setWaitTime(const size_t val) {
     wait_time_ = val;
 }
 
-void Timer::setOneShot(const bool flag)
-{
+void Timer::setOneShot(const bool flag) {
     one_shot_ = flag;
 }
 
-void Timer::pause()
-{
+void Timer::pause() {
     paused_ = true;
 }
 
-void Timer::resume()
-{
+void Timer::resume() {
     paused_ = false;
 }

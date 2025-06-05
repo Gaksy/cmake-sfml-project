@@ -4,14 +4,12 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Audio/Sound.hpp>
 
-#include "../Util/Camera.h"
-#include "SceneManager.h"
-#include "../Util/Timer.h"
-#include "ResourcesUnit/Animation.h"
-#include "ResourcesUnit/Atlas.h"
 #include "Scene/Scene.h"
-#include "SFML/Audio/Sound.hpp"
+#include "ResourcesUnit/Animation.h"
+#include "Util/Camera.h"
+#include "Util/Timer.h"
 
 class MenuScene: public Scene{
 public:

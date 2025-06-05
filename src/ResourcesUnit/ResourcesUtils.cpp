@@ -1,5 +1,5 @@
+#include <SFML/Graphics/Image.hpp>
 #include "ResourcesUnit/ResourcesUtil.h"
-#include "SFML/Graphics/Image.hpp"
 
 void flipTextureHorizontally(const sf::Texture* original, sf::Texture* destination){
     // 获取原始纹理的图像
@@ -26,10 +26,8 @@ void loadTextureFromFile(sf::Texture* texture, const char* path_file) {
     }
 }
 
-void loadSoundFromFile(sf::SoundBuffer* soundBuffer, const char* path_file)
-{
-    if (!soundBuffer->loadFromFile(path_file))
-    {
+void loadSoundFromFile(sf::SoundBuffer* soundBuffer, const char* path_file) {
+    if (!soundBuffer->loadFromFile(path_file)) {
         fprintf(stderr, "load file error: %s\n", path_file);
     }
 }

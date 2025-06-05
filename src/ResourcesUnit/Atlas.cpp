@@ -1,4 +1,4 @@
-#include "../include/ResourcesUnit/Atlas.h"
+#include "ResourcesUnit/Atlas.h"
 
 Atlas::Atlas(const char* path_template, const size_t num) {
     loadFromFile(path_template, num);
@@ -27,8 +27,7 @@ const sf::Texture* Atlas::operator[](const size_t frame_index) const{
     return getFrameImage(frame_index);
 }
 
-void Atlas::loadFromFile(const char* path_template, size_t num)
-{
+void Atlas::loadFromFile(const char* path_template, size_t num) {
     img_list_.clear();
     img_list_.resize(num);
 

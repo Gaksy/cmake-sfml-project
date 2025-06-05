@@ -8,8 +8,7 @@ extern SceneManager game_scene_manager;
 
 GameScene::GameScene(const sf::Font& font, sf::RenderWindow* p_window):
     Scene(font, p_window, L"游戏局内场景")
-{
-}
+{ ; }
 
 GameScene::~GameScene() {
     Scene::~Scene();

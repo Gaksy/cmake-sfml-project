@@ -5,8 +5,7 @@
 
 #include "ResourcesUnit/Atlas.h"
 
-namespace sf
-{
+namespace sf {
     class RenderWindow;
 }
 

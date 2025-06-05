@@ -4,8 +4,8 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Audio/Sound.hpp>
 
-#include "SFML/Audio/Sound.hpp"
 #include "Util/Camera.h"
 
 class Scene {

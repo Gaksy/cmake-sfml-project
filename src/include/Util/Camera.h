@@ -1,7 +1,10 @@
 #ifndef CAMERA_H
 #define CAMERA_H
+
+#include <SFML/System/Vector2.hpp>
+
 #include "Timer.h"
-#include "SFML/System/Vector2.hpp"
+
 
 class Camera {
 public:

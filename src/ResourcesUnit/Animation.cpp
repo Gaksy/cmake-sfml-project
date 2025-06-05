@@ -1,9 +1,8 @@
 #include "../include/ResourcesUnit/Animation.h"
 
 #include <utility>
-
-#include "SFML/Graphics/RectangleShape.hpp"
-#include "SFML/Graphics/RenderWindow.hpp"
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 Animation::Animation(sf::RenderWindow* p_window):
     timer_(0),
@@ -12,8 +11,7 @@ Animation::Animation(sf::RenderWindow* p_window):
     interval_(0),
     p_window_(p_window),
     p_atlas_(nullptr)
-{
-}
+{ ; }
 
 void Animation::reset() {
     timer_ = 0;
