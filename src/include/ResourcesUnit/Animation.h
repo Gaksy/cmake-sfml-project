@@ -12,7 +12,7 @@ namespace sf
 
 class Animation {
 public:
-    Animation() = default;
+    explicit Animation(sf::RenderWindow* p_window);
     ~Animation() = default;
 
 public:
@@ -33,7 +33,7 @@ private:
     size_t interval_;
     size_t index_frame_;
     bool is_loop_;
-    Atlas* atlas_;
+    Atlas* p_atlas_;
     std::function<void()> callback_;
 
     sf::RenderWindow* p_window_;

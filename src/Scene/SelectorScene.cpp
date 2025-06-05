@@ -14,12 +14,12 @@ void SelectorScene::onExit()
     printf("退出选角场景\n");
 }
 
-void SelectorScene::onUpdate()
+void SelectorScene::onUpdate(const size_t delta)
 {
     printf("正在运行选角场景\n");
 }
 
-void SelectorScene::onDraw()
+void SelectorScene::onDraw(const Camera& camera)
 {
     drawSceneLabel();
 }

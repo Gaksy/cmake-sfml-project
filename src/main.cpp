@@ -97,6 +97,8 @@ sf::Texture img_avatar_sunflower;     // 龙日葵头像图片
 sf::SoundBuffer sound_bgm_game;
 sf::SoundBuffer sound_bgm_menu;
 
+sf::SoundBuffer sound_ui_confirm;
+
 sf::SoundBuffer sound_pea_break_1;
 sf::SoundBuffer sound_pea_break_2;
 sf::SoundBuffer sound_pea_break_3;
@@ -110,6 +112,8 @@ Scene* p_game_scene = nullptr;
 Scene* p_selector_scene = nullptr;
 
 SceneManager game_scene_manager;
+
+Camera main_camera;
 
 void loadGameResources()
 {
@@ -191,14 +195,18 @@ void loadGameResources()
     loadSoundFromFile(&sound_pea_shoot_1, "resources/game_file/pea_shoot_1.mp3");
     loadSoundFromFile(&sound_pea_shoot_2, "resources/game_file/pea_shoot_2.mp3");
     loadSoundFromFile(&sound_pea_shoot_ex, "resources/game_file/pea_shoot_ex.mp3");
+    loadSoundFromFile(&sound_ui_confirm, "resources/game_file/ui_confirm.wav");
 }
 
 int main()
 {
     // init window
-    sf::RenderWindow window(sf::VideoMode({900u, 800u}), "Test", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode({1280u, 720u}), "Test", sf::Style::Close);
     window.setFramerateLimit(60);
     constexpr sf::Color backgroundColor = sf::Color::White;
+    // open window
+    window.clear(sf::Color::Black);
+    window.display();
 
     // loadfile
     const sf::Font font("resources/font_file/NISC18030.ttf");
@@ -210,6 +218,9 @@ int main()
     p_game_scene = new GameScene(font, &window);
     game_scene_manager.setCurrentScene(p_menu_scene);
 
+    // 计时
+    sf::Clock clock;
+    sf::Time last_time = clock.getElapsedTime();
     // start
     while (window.isOpen())
     {
@@ -221,10 +232,14 @@ int main()
             }
         }
 
-        game_scene_manager.onUpdate();
+        sf::Time current_time = clock.getElapsedTime();
+        sf::Time delta_time = current_time - last_time;
+        last_time = current_time;
+
+        game_scene_manager.onUpdate(delta_time.asMilliseconds());
 
         window.clear(backgroundColor);
-        game_scene_manager.onDraw();
+        game_scene_manager.onDraw(main_camera);
         window.display();
     }
 

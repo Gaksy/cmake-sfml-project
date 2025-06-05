@@ -20,8 +20,8 @@ public:
     void setCurrentScene(Scene* p_scene);
     void switchToScene(SceneType sceneType);
 
-    void onUpdate() const;
-    void onDraw() const;
+    void onUpdate(size_t delta) const;
+    void onDraw(const Camera& camera) const;
     void onInput(const sf::Event& event) const;
 
 private:

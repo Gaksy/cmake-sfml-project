@@ -23,12 +23,12 @@ void GameScene::onExit() {
     printf("退出游戏局内场景\n");
 }
 
-void GameScene::onUpdate() {
-    printf("正在运行游戏局内场景\n");
+void GameScene::onUpdate(const size_t delta) {
+
 }
 
-void GameScene::onDraw() {
-    drawSceneLabel();
+void GameScene::onDraw(const Camera& camera) {
+
 }
 
 void GameScene::onInput(const sf::Event& event) {

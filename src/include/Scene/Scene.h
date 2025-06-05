@@ -5,6 +5,9 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "SFML/Audio/Sound.hpp"
+#include "Util/Camera.h"
+
 class Scene {
 public:
     explicit Scene(sf::Font font, sf::RenderWindow* p_window, const wchar_t* p_scene_label);
@@ -14,8 +17,8 @@ public:
     virtual void onEnter()=0;
     virtual void onExit()=0;
 
-    virtual void onUpdate()=0;
-    virtual void onDraw()=0;
+    virtual void onUpdate(size_t delta)=0;
+    virtual void onDraw(const Camera& camera)=0;
     virtual void onInput(const sf::Event& event)=0;
 
     virtual const sf::Font& getBaseFont()const;
@@ -24,6 +27,10 @@ public:
     sf::RenderWindow& getWindow()const;
     void drawSceneLabel() const;
     const wchar_t* getSceneLabel() const;
+
+protected:
+    static void resetSound(sf::Sound*& p_sound, const sf::SoundBuffer& sound_buffer, bool loop = false, bool play_now = false);
+    static void freeSound(sf::Sound*& p_sound, bool async_wait_finished = false);
 
 private:
     sf::Font base_font_;

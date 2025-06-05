@@ -24,6 +24,8 @@ add_executable(${PROJECT_NAME}
         src/ResourcesUnit/Atlas.cpp
         src/ResourcesUnit/ResourcesUtils.cpp
         src/ResourcesUnit/Animation.cpp
+        src/Util/Camera.cpp
+        src/Util/Timer.cpp
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)

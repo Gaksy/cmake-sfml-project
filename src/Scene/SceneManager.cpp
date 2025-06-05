@@ -34,14 +34,15 @@ void SceneManager::switchToScene(SceneType sceneType)
     p_current_scene_->onEnter();
 }
 
-void SceneManager::onUpdate() const
+void SceneManager::onUpdate(const size_t delta) const
 {
-    p_current_scene_->onUpdate();
+    p_current_scene_->onUpdate(delta);
 }
 
-void SceneManager::onDraw() const
+void SceneManager::onDraw(const Camera& camera) const
 {
-    p_current_scene_->onDraw();
+    p_current_scene_->onDraw(camera);
+    p_current_scene_->drawSceneLabel();
 }
 
 void SceneManager::onInput(const sf::Event& event) const

@@ -15,8 +15,8 @@ public:
 public:
     void onEnter()override;
     void onExit()override;
-    void onUpdate()override;
-    void onDraw()override;
+    void onUpdate(size_t delta)override;
+    void onDraw(const Camera& camera)override;
     void onInput(const sf::Event& event)override;
 };
 

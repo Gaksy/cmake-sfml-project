@@ -5,13 +5,23 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
+Animation::Animation(sf::RenderWindow* p_window):
+    timer_(0),
+    index_frame_(0),
+    is_loop_(false),
+    interval_(0),
+    p_window_(p_window),
+    p_atlas_(nullptr)
+{
+}
+
 void Animation::reset() {
     timer_ = 0;
     index_frame_ = 0;
 }
 
 void Animation::setAtlas(Atlas* atlas) {
-    atlas_ = atlas;
+    p_atlas_ = atlas;
 }
 
 void Animation::setLoop(const bool loop) {
@@ -31,12 +41,12 @@ size_t Animation::getIndexFrame() const {
 }
 
 const sf::Texture* Animation::getCurrentFrame() const {
-    return atlas_->getFrameImage(index_frame_);
+    return p_atlas_->getFrameImage(index_frame_);
 }
 
 bool Animation::checkFinished() const {
     if (is_loop_) { return false; }
-    return (index_frame_ == atlas_->getFrameImageSize() - 1);
+    return (index_frame_ == p_atlas_->getFrameImageSize() - 1);
 }
 
 void Animation::onUpdate(const size_t delta)
@@ -45,8 +55,8 @@ void Animation::onUpdate(const size_t delta)
     if (timer_ >= interval_) {
         timer_ = 0;
         index_frame_++;
-        if (index_frame_ >= atlas_->getFrameImageSize()) {
-            index_frame_ = is_loop_ ? 0 : atlas_->getFrameImageSize() - 1;
+        if (index_frame_ >= p_atlas_->getFrameImageSize()) {
+            index_frame_ = is_loop_ ? 0 : p_atlas_->getFrameImageSize() - 1;
             if (!is_loop_ && callback_) {
                 callback_();
             }
@@ -56,7 +66,16 @@ void Animation::onUpdate(const size_t delta)
 
 void Animation::onDraw(const float x, const float y) const
 {
-    sf::RectangleShape rectangle_shape(sf::Vector2f(x, y));
-    rectangle_shape.setTexture(atlas_->getFrameImage(index_frame_));
-    p_window_->draw(rectangle_shape);
+    const sf::Texture* texture = p_atlas_->getFrameImage(index_frame_);
+
+    if (texture != nullptr) {
+        const sf::Vector2u texture_size = texture->getSize();
+        sf::RectangleShape rectangle_shape(
+            sf::Vector2f(static_cast<float>(texture_size.x), static_cast<float>(texture_size.y))
+        );
+
+        rectangle_shape.setPosition({x, y});
+        rectangle_shape.setTexture(texture);
+        p_window_->draw(rectangle_shape);
+    }
 }

@@ -5,7 +5,13 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "../Util/Camera.h"
+#include "SceneManager.h"
+#include "../Util/Timer.h"
+#include "ResourcesUnit/Animation.h"
+#include "ResourcesUnit/Atlas.h"
 #include "Scene/Scene.h"
+#include "SFML/Audio/Sound.hpp"
 
 class MenuScene: public Scene{
 public:
@@ -15,9 +21,17 @@ public:
 public:
     void onEnter()override;
     void onExit()override;
-    void onUpdate()override;
-    void onDraw()override;
+    void onUpdate(size_t delta)override;
+    void onDraw(const Camera& camera)override;
     void onInput(const sf::Event& event)override;
+
+private:
+    Animation animation_peashooter_run_right_;
+    Camera camera;
+    Timer timer;
+
+    sf::Sound *p_sound_background_bgm_;
+    sf::Sound *p_sound_ui_confirm_;
 };
 
 
