@@ -4,6 +4,7 @@
 #include <mach/processor.h>
 
 #include "ResourcesUnit/Atlas.h"
+#include "Util/Camera.h"
 
 namespace sf {
     class RenderWindow;
@@ -25,6 +26,7 @@ public:
     [[nodiscard]] bool checkFinished() const;
 
     void onUpdate(size_t delta);
+    void onDraw(const Camera& camera, float x, float y)const;
     void onDraw(float x, float y)const;
 
 private:

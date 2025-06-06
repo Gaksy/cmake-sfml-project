@@ -4,6 +4,8 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "Util/Camera.h"
+
 Animation::Animation(sf::RenderWindow* p_window):
     timer_(0),
     index_frame_(0),
@@ -62,7 +64,12 @@ void Animation::onUpdate(const size_t delta)
     }
 }
 
-void Animation::onDraw(const float x, const float y) const
+void Animation::onDraw(const Camera& camera, const float x, const float y) const
+{
+    onDraw(x - camera.getPosition().x, y - camera.getPosition().y);
+}
+
+void Animation::onDraw(float x, float y) const
 {
     const sf::Texture* texture = p_atlas_->getFrameImage(index_frame_);
 

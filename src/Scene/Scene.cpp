@@ -82,11 +82,19 @@ void Scene::freeSound(sf::Sound*& p_sound, const bool async_wait_finished) {
     }
 }
 
-void Scene::drawTexture(const sf::Vector2u& draw_pos, const sf::Texture& texture) const {
+void Scene::drawTexture(const sf::Vector2f& draw_pos, const sf::Texture& texture) const {
     sf::RectangleShape shape;
     shape.setPosition(sf::Vector2f(draw_pos));
     shape.setTexture(&texture);
     shape.setSize(sf::Vector2f(texture.getSize()));
 
     getWindow().draw(shape);
+}
+
+void Scene::drawTexture(const Camera& camera, const sf::Vector2f draw_pos, const sf::Texture& texture) const {
+    sf::Vector2f position = {0, 0};
+    position.x = draw_pos.x - camera.getPosition().x;
+    position.y = draw_pos.y - camera.getPosition().y;
+
+    drawTexture(position, texture);
 }

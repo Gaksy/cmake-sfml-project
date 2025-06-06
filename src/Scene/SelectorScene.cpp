@@ -51,12 +51,16 @@ SelectorScene::SelectorScene(const sf::Font& font, sf::RenderWindow* p_window):
     pos_img_2P_selector_btn_left_({0,0}),
     pos_img_2P_selector_btn_right_({0,0}),
     animation_peashooter(p_window),
-    animation_sunflower(p_window)
+    animation_sunflower(p_window),
+    player_type_1(PlayerType::Peashooter),
+    player_type_2(PlayerType::Sunflower)
 { ; }
 
 void SelectorScene::onEnter() {
     animation_peashooter.setAtlas(&atlas_peashooter_idle_right);
     animation_sunflower.setAtlas(&atlas_sunflower_idle_right);
+    animation_peashooter.setLoop(true);
+    animation_sunflower.setLoop(true);
     animation_peashooter.setInterval(100);
     animation_sunflower.setInterval(100);
 
@@ -64,36 +68,38 @@ void SelectorScene::onEnter() {
 
     const unsigned int width = getWindowWidth();
     const unsigned int height = getWindowHeight();
+    const float width_f = static_cast<float>(width);
+    const float height_f = static_cast<float>(height);
 
-    pos_img_VS_.x = (width - img_VS.getSize() .x) / 2;
-    pos_img_VS_.y = (height - img_VS.getSize().y) / 2;
-    pos_img_tip_.x = (width - img_selector_tip.getSize().x) / 2;
-    pos_img_tip_.y = height - 125;
-    pos_img_1P_.x = (width / 2 - img_1P.getSize().x) / 2 - OFFSET_X;
-    pos_img_1P_.y = 35;
-    pos_img_2P_.x = width / 2 + (width / 2 - img_2P.getSize().x) / 2 + OFFSET_X;
+    pos_img_VS_.x = static_cast<float>(width - img_VS.getSize() .x) / 2.0f;
+    pos_img_VS_.y = static_cast<float>(height - img_VS.getSize().y) / 2.0f;
+    pos_img_tip_.x = static_cast<float>(width - img_selector_tip.getSize().x) / 2.0f;
+    pos_img_tip_.y = static_cast<float>(height) - 125.0f;
+    pos_img_1P_.x = (width_f / 2.0f - static_cast<float>(img_1P.getSize().x)) / 2.0f - OFFSET_X;
+    pos_img_1P_.y = 35.0f;
+    pos_img_2P_.x = width_f / 2.0f + (width_f / 2.0f - static_cast<float>(img_2P.getSize().x)) / 2.0f + OFFSET_X;
     pos_img_2P_.y = pos_img_1P_.y;
-    pos_img_1P_desc_.x = (width / 2 - img_1P_desc.getSize().x) / 2 - OFFSET_X;
-    pos_img_1P_desc_.y = height - 150;
-    pos_img_2P_desc_.x = width / 2 + (width / 2 - img_2P_desc.getSize().x) / 2 + OFFSET_X;
+    pos_img_1P_desc_.x = (width_f / 2.0f - static_cast<float>(img_1P_desc.getSize().x)) / 2.0f - OFFSET_X;
+    pos_img_1P_desc_.y = height_f - 150.0f;
+    pos_img_2P_desc_.x = width_f / 2.0f + (width_f / 2.0f - static_cast<float>(img_2P_desc.getSize().x)) / 2.0f + OFFSET_X;
     pos_img_2P_desc_.y = pos_img_1P_desc_.y;
-    pos_img_1P_gravestone_.x = (width / 2 - img_gravestone_right.getSize().x) / 2 - OFFSET_X;
-    pos_img_1P_gravestone_.y = pos_img_1P_.y + img_1P.getSize().y + 35;
-    pos_img_2P_gravestone_.x = width / 2 + (width / 2 - img_gravestone_left.getSize().x) / 2 + OFFSET_X;
+    pos_img_1P_gravestone_.x = (width_f / 2.0f - static_cast<float>(img_gravestone_right.getSize().x)) / 2.0f - OFFSET_X;
+    pos_img_1P_gravestone_.y = pos_img_1P_.y + static_cast<float>(img_1P.getSize().y) + 35.0f;
+    pos_img_2P_gravestone_.x = width_f / 2.0f + (width_f / 2.0f - static_cast<float>(img_gravestone_left.getSize().x)) / 2.0f + OFFSET_X;
     pos_img_2P_gravestone_.y = pos_img_1P_gravestone_.y;
-    pos_animation_1P.x = (width / 2 - atlas_peashooter_idle_right.getFrameImage(0)->getSize().x) / 2 - OFFSET_X;
-    pos_animation_1P.y = pos_img_1P_gravestone_.y + 80;
-    pos_animation_2P.x = width / 2 + (width / 2 - atlas_peashooter_idle_right.getFrameImage(0)->getSize().x) / 2 + OFFSET_X;
+    pos_animation_1P.x = (width_f / 2.0f - static_cast<float>(atlas_peashooter_idle_right.getFrameImage(0)->getSize().x)) / 2.0f - OFFSET_X;
+    pos_animation_1P.y = pos_img_1P_gravestone_.y + 80.0f;
+    pos_animation_2P.x = width_f / 2.0f + (width_f / 2.0f - static_cast<float>(atlas_peashooter_idle_right.getFrameImage(0)->getSize().x)) / 2.0f + OFFSET_X;
     pos_animation_2P.y = pos_animation_1P.y;
-    pos_img_1P_name_.y = pos_animation_1P.y + 155;
+    pos_img_1P_name_.y = pos_animation_1P.y + 155.0f;
     pos_img_2P_name_.y = pos_img_1P_name_.y;
-    pos_img_1P_selector_btn_left_.x = pos_img_1P_gravestone_.x - img_1P_selector_btn_idle_left.getSize().x;
-    pos_img_1P_selector_btn_left_.y = pos_img_1P_gravestone_.y + (img_gravestone_right.getSize().y - img_1P_selector_btn_idle_left.getSize().y) / 2;
-    pos_img_1P_selector_btn_right_.x = pos_img_1P_gravestone_.x + img_gravestone_right.getSize().x;
+    pos_img_1P_selector_btn_left_.x = pos_img_1P_gravestone_.x - static_cast<float>(img_1P_selector_btn_idle_left.getSize().x);
+    pos_img_1P_selector_btn_left_.y = pos_img_1P_gravestone_.y + static_cast<float>(img_gravestone_right.getSize().y - img_1P_selector_btn_idle_left.getSize().y) / 2.0f;
+    pos_img_1P_selector_btn_right_.x = pos_img_1P_gravestone_.x + static_cast<float>(img_gravestone_right.getSize().x);
     pos_img_1P_selector_btn_right_.y = pos_img_1P_selector_btn_left_.y;
-    pos_img_2P_selector_btn_left_.x = pos_img_2P_gravestone_.x - img_2P_selector_btn_idle_left.getSize().x;
+    pos_img_2P_selector_btn_left_.x = pos_img_2P_gravestone_.x - static_cast<float>(img_2P_selector_btn_idle_left.getSize().x);
     pos_img_2P_selector_btn_left_.y = pos_img_1P_selector_btn_left_.y;
-    pos_img_2P_selector_btn_right_.x = pos_img_2P_gravestone_.x + img_gravestone_left.getSize().x;
+    pos_img_2P_selector_btn_right_.x = pos_img_2P_gravestone_.x + static_cast<float>(img_gravestone_left.getSize().x);
     pos_img_2P_selector_btn_right_.y = pos_img_1P_selector_btn_left_.y;
 }
 
@@ -102,7 +108,8 @@ void SelectorScene::onExit() {
 }
 
 void SelectorScene::onUpdate(const size_t delta) {
-
+    animation_peashooter.onUpdate(delta);
+    animation_sunflower.onUpdate(delta);
 }
 
 void SelectorScene::onDraw(const Camera& camera) {
@@ -112,9 +119,29 @@ void SelectorScene::onDraw(const Camera& camera) {
     drawTexture(pos_img_2P_, img_2P);
     drawTexture(pos_img_1P_gravestone_, img_gravestone_right);
     drawTexture(pos_img_2P_gravestone_, img_gravestone_left);
+
+    switch (player_type_1) {
+    case PlayerType::Peashooter:
+        animation_peashooter.onDraw(camera, pos_animation_1P.x, pos_animation_1P.y);
+        break;
+    case PlayerType::Sunflower:
+        animation_sunflower.onDraw(camera, pos_animation_1P.x, pos_animation_1P.y);
+        break;
+    }
+
+    switch (player_type_2) {
+    case PlayerType::Peashooter:
+        animation_peashooter.onDraw(camera, pos_animation_2P.x, pos_animation_2P.y);
+        break;
+    case PlayerType::Sunflower:
+        animation_sunflower.onDraw(camera, pos_animation_2P.x, pos_animation_2P.y);
+        break;
+    }
+
     drawTexture(pos_img_1P_desc_, img_1P_desc);
     drawTexture(pos_img_2P_desc_, img_2P_desc);
     drawTexture(pos_img_tip_, img_selector_tip);
+
     drawSceneLabel();
 }
 
