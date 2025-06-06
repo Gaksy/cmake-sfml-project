@@ -43,6 +43,8 @@ protected:
     void drawTexture(const Camera& camera, sf::Vector2f draw_pos, const sf::Texture& texture) const;
     void drawTexture(const sf::Vector2f& pos, float width, float height, const sf::Texture& texture, bool width_flipped = false) const;
     void drawTextWithShaded(const sf::Vector2f& pos, const sf::Text& text) const;
+    void drawText(const sf::Vector2f& pos, const char* str, size_t size = 16, const sf::Color& color = sf::Color::Red) const;
+    void drawText(const sf::Vector2f& pos, const wchar_t* str, size_t size = 16, const sf::Color& color = sf::Color::Red) const;
 
 private:
     sf::Font base_font_;

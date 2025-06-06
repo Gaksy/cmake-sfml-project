@@ -20,6 +20,10 @@ public:
     void onUpdate(size_t delta)override;
     void onDraw(const Camera& camera)override;
     void onInput(const sf::Event& event)override;
+
+private:
+    sf::Vector2f pos_img_sky_;
+    sf::Vector2f pos_img_hills_;
 };
 
 

@@ -16,18 +16,21 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(${PROJECT_NAME}
         src/main.cpp
+        src/Util/Camera.cpp
+        src/Util/Timer.cpp
+        src/Util/Platform.cpp
+        src/Util/MainDrawUtil.cpp
+        src/ResourcesUnit/Atlas.cpp
+        src/ResourcesUnit/Animation.cpp
+        src/ResourcesUnit/ResourcesUtils.cpp
+        src/ResourcesUnit/SoundManager.cpp
         src/Scene/Scene.cpp
         src/Scene/MenuScene.cpp
         src/Scene/GameScene.cpp
         src/Scene/SceneManager.cpp
         src/Scene/SelectorScene.cpp
-        src/ResourcesUnit/Atlas.cpp
-        src/ResourcesUnit/ResourcesUtils.cpp
-        src/ResourcesUnit/Animation.cpp
-        src/Util/Camera.cpp
-        src/Util/Timer.cpp
-        src/ResourcesUnit/SoundManager.cpp
-        src/include/ResourcesUnit/SoundManager.h
+        src/include/Player/Player.cpp
+        src/include/Player/Player.h
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)

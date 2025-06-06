@@ -1,4 +1,7 @@
+#include <vector>
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 #include "ResourcesUnit/ResourcesUtil.h"
 #include "ResourcesUnit/Atlas.h"
@@ -8,8 +11,9 @@
 #include "Scene/Scene.h"
 #include "Scene/SceneManager.h"
 #include "Scene/SelectorScene.h"
-#include "SFML/Audio/SoundBuffer.hpp"
+#include "Util/Platform.h"
 
+bool is_debug = false;
 
 // 所需 图片/图集 变量的定义:
 // 1.主菜单背景 图片
@@ -100,6 +104,10 @@ SoundManager game_sound_manager;
 // 字体
 sf::Font default_font("resources/font_file/NISC18030.ttf");
 
+// 游戏平台
+std::vector<Platform> platform_list;
+
+// 场景
 Scene* p_menu_scene = nullptr;
 Scene* p_game_scene = nullptr;
 Scene* p_selector_scene = nullptr;
@@ -198,10 +206,12 @@ void loadGameResources()
     game_sound_manager.loadSound("resources/game_file/ui_switch.wav", "ui_switch");
 }
 
+sf::RenderWindow window(sf::VideoMode({1280u, 720u}), "Test", sf::Style::Close);
+
 int main()
 {
     // init window
-    sf::RenderWindow window(sf::VideoMode({1280u, 720u}), "Test", sf::Style::Close);
+
     window.setFramerateLimit(60);
     constexpr sf::Color backgroundColor = sf::Color::White;
     // open window

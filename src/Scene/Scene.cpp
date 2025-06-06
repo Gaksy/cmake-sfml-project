@@ -134,6 +134,33 @@ void Scene::drawTextWithShaded(const sf::Vector2f& pos, const sf::Text& text) co
     window.draw(mainText);
 }
 
+void Scene::drawText(const sf::Vector2f& pos, const char* str, const size_t size, const sf::Color& color)const {
+    // Get the window reference
+    sf::RenderWindow& window = getWindow();
+
+    // Create a copy of the original text to use as the shadow
+    sf::Text text(getBaseFont(), str);
+    // Set shadow properties
+    text.setCharacterSize(size);
+    text.setPosition(pos);
+    text.setFillColor(color);
+    window.draw(text);
+}
+
+void Scene::drawText(const sf::Vector2f& pos, const wchar_t* str, size_t size, const sf::Color& color) const
+{
+    // Get the window reference
+    sf::RenderWindow& window = getWindow();
+
+    // Create a copy of the original text to use as the shadow
+    sf::Text text(getBaseFont(), str);
+    // Set shadow properties
+    text.setCharacterSize(size);
+    text.setPosition(pos);
+    text.setFillColor(color);
+    window.draw(text);
+}
+
 void Scene::drawTexture(const sf::Vector2f& pos, const float width, const float height, const sf::Texture& texture,  const bool width_flipped) const {
     sf::RenderWindow& window = getWindow();
     sf::Sprite sprite(texture);
