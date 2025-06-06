@@ -1,9 +1,7 @@
-#include "SoundManager.h"
+#include "ResourcesUnit/SoundManager.h"
+#include "ResourcesUnit/ResourcesUtil.h"
 
-#include "ResourcesUtil.h"
-
-SoundManager::SoundManager() {
-}
+SoundManager::SoundManager() = default;
 
 SoundManager::~SoundManager() {
     for (std::pair<std::string, SoundPack> p_sound_pack: sounds_) {

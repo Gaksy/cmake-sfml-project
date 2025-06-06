@@ -5,6 +5,8 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/System/Sleep.hpp>
 
+#include "SFML/Graphics/RectangleShape.hpp"
+
 Scene::Scene(sf::Font font, sf::RenderWindow* p_window, const wchar_t* const p_scene_label):
     base_font_(std::move(font)),
     p_window_(p_window),
@@ -37,6 +39,18 @@ const wchar_t* Scene::getSceneLabel() const {
     return p_scene_label_;
 }
 
+sf::Vector2u Scene::getWindowSize() const {
+    return p_window_->getSize();
+}
+
+unsigned int Scene::getWindowWidth() const {
+    return p_window_->getSize().x;
+}
+
+unsigned int Scene::getWindowHeight() const {
+    return p_window_->getSize().y;
+}
+
 void Scene::resetSound(sf::Sound*& p_sound, const sf::SoundBuffer& sound_buffer, const bool loop, const bool play_now) {
     if (p_sound) {
         delete p_sound;
@@ -66,4 +80,13 @@ void Scene::freeSound(sf::Sound*& p_sound, const bool async_wait_finished) {
         delete p_sound;
         p_sound = nullptr;
     }
+}
+
+void Scene::drawTexture(const sf::Vector2u& draw_pos, const sf::Texture& texture) const {
+    sf::RectangleShape shape;
+    shape.setPosition(sf::Vector2f(draw_pos));
+    shape.setTexture(&texture);
+    shape.setSize(sf::Vector2f(texture.getSize()));
+
+    getWindow().draw(shape);
 }

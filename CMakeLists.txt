@@ -26,7 +26,7 @@ add_executable(${PROJECT_NAME}
         src/ResourcesUnit/Animation.cpp
         src/Util/Camera.cpp
         src/Util/Timer.cpp
-        src/include/ResourcesUnit/SoundManager.cpp
+        src/ResourcesUnit/SoundManager.cpp
         src/include/ResourcesUnit/SoundManager.h
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)

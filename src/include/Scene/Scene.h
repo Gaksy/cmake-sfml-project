@@ -28,9 +28,14 @@ public:
     void drawSceneLabel() const;
     const wchar_t* getSceneLabel() const;
 
+    sf::Vector2u getWindowSize()const;
+    unsigned int getWindowWidth()const;
+    unsigned int getWindowHeight()const;
+
 protected:
     static void resetSound(sf::Sound*& p_sound, const sf::SoundBuffer& sound_buffer, bool loop = false, bool play_now = false);
     static void freeSound(sf::Sound*& p_sound, bool async_wait_finished = false);
+    void drawTexture(const sf::Vector2u& draw_pos, const sf::Texture& texture) const;
 
 private:
     sf::Font base_font_;
