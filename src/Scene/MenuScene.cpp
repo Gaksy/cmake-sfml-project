@@ -3,29 +3,26 @@
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 
+#include "ResourcesUnit/SoundManager.h"
 #include "Scene/SceneManager.h"
 
 
 extern SceneManager game_scene_manager;
 extern sf::Texture img_menu_background;
-extern sf::SoundBuffer sound_bgm_menu;
-extern sf::SoundBuffer sound_ui_confirm;
+extern SoundManager game_sound_manager;
 
 MenuScene::MenuScene(const sf::Font& font, sf::RenderWindow* p_window):
     Scene(font, p_window, L"菜单场景"),
-    animation_peashooter_run_right_(p_window),
-    p_sound_background_bgm_(nullptr),
-    p_sound_ui_confirm_(nullptr)
+    animation_peashooter_run_right_(p_window)
 { ; }
 
 void MenuScene::onEnter() {
-    resetSound(p_sound_background_bgm_, sound_bgm_menu, true, true);
-    resetSound(p_sound_ui_confirm_, sound_ui_confirm);
+    game_sound_manager.setSoundLoop("bgm_menu", true);
+    game_sound_manager.playSound("bgm_menu");
 }
 
 void MenuScene::onExit() {
-    freeSound(p_sound_background_bgm_);
-    freeSound(p_sound_ui_confirm_, true);
+    game_sound_manager.stopSound("bgm_menu");
 }
 
 void MenuScene::onUpdate(const size_t delta) {
@@ -43,7 +40,7 @@ void MenuScene::onDraw(const Camera& camera) {
 
 void MenuScene::onInput(const sf::Event& event) {
     if (event.is<sf::Event::KeyPressed>()){
-        p_sound_ui_confirm_->play();
+        game_sound_manager.playSound("ui_confirm");
         game_scene_manager.switchToScene(SceneManager::SceneType::SELECTOR);
     }
 }

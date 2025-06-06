@@ -38,8 +38,8 @@ private:
     sf::Vector2u pos_img_2P_selector_btn_left_;                     // 2P 向左切换按钮位置
     sf::Vector2u pos_img_2P_selector_btn_right_;                    // 2P 向右切换按钮位置
 
-    Animation animation_peashooter;                                 // 豌豆射手动画
-    Animation animation_sunflower;                                  // 龙日葵动画
+    //Animation animation_peashooter;                                 // 豌豆射手动画
+    //Animation animation_sunflower;                                  // 龙日葵动画
 };
 
 #endif //SECECTORSCENE_H

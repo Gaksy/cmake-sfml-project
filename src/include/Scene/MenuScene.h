@@ -4,7 +4,6 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Audio/Sound.hpp>
 
 #include "Scene/Scene.h"
 #include "ResourcesUnit/Animation.h"
@@ -27,9 +26,6 @@ private:
     Animation animation_peashooter_run_right_;
     Camera camera;
     Timer timer;
-
-    sf::Sound *p_sound_background_bgm_;
-    sf::Sound *p_sound_ui_confirm_;
 };
 
 

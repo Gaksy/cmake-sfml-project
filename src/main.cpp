@@ -2,6 +2,7 @@
 
 #include "ResourcesUnit/ResourcesUtil.h"
 #include "ResourcesUnit/Atlas.h"
+#include "ResourcesUnit/SoundManager.h"
 #include "Scene/GameScene.h"
 #include "Scene/MenuScene.h"
 #include "Scene/Scene.h"
@@ -93,19 +94,8 @@ sf::Texture img_winner_bar;           // 获胜玩家背景文本图片
 sf::Texture img_avatar_peashooter;    // 婉逗射手头像图片
 sf::Texture img_avatar_sunflower;     // 龙日葵头像图片
 
-// 音效
-sf::SoundBuffer sound_bgm_game;
-sf::SoundBuffer sound_bgm_menu;
-
-sf::SoundBuffer sound_ui_confirm;
-
-sf::SoundBuffer sound_pea_break_1;
-sf::SoundBuffer sound_pea_break_2;
-sf::SoundBuffer sound_pea_break_3;
-
-sf::SoundBuffer sound_pea_shoot_1;
-sf::SoundBuffer sound_pea_shoot_2;
-sf::SoundBuffer sound_pea_shoot_ex;
+// 音频管理器
+SoundManager game_sound_manager;
 
 Scene* p_menu_scene = nullptr;
 Scene* p_game_scene = nullptr;
@@ -187,15 +177,15 @@ void loadGameResources()
     loadTextureFromFile(&img_avatar_sunflower, "resources/game_file/avatar_sunflower.png");           // 龙日葵头像图片
 
     // 添加音频资源
-    loadSoundFromFile(&sound_bgm_game, "resources/game_file/bgm_game.mp3");
-    loadSoundFromFile(&sound_bgm_menu, "resources/game_file/bgm_menu.mp3");
-    loadSoundFromFile(&sound_pea_break_1, "resources/game_file/pea_break_1.mp3");
-    loadSoundFromFile(&sound_pea_break_2, "resources/game_file/pea_break_2.mp3");
-    loadSoundFromFile(&sound_pea_break_3, "resources/game_file/pea_break_3.mp3");
-    loadSoundFromFile(&sound_pea_shoot_1, "resources/game_file/pea_shoot_1.mp3");
-    loadSoundFromFile(&sound_pea_shoot_2, "resources/game_file/pea_shoot_2.mp3");
-    loadSoundFromFile(&sound_pea_shoot_ex, "resources/game_file/pea_shoot_ex.mp3");
-    loadSoundFromFile(&sound_ui_confirm, "resources/game_file/ui_confirm.wav");
+    game_sound_manager.loadSound("resources/game_file/bgm_game.mp3", "bgm_game");
+    game_sound_manager.loadSound("resources/game_file/bgm_menu.mp3", "bgm_menu");
+    game_sound_manager.loadSound("resources/game_file/pea_break_1.mp3", "pea_break_1");
+    game_sound_manager.loadSound("resources/game_file/pea_break_2.mp3", "pea_break_2");
+    game_sound_manager.loadSound("resources/game_file/pea_break_3.mp3", "pea_break_3");
+    game_sound_manager.loadSound("resources/game_file/pea_shoot_1.mp3", "pea_shoot_1");
+    game_sound_manager.loadSound("resources/game_file/pea_shoot_2.mp3", "pea_shoot_2");
+    game_sound_manager.loadSound("resources/game_file/pea_shoot_ex.mp3", "pea_shoot_ex");
+    game_sound_manager.loadSound("resources/game_file/ui_confirm.wav", "ui_confirm");
 }
 
 int main()
