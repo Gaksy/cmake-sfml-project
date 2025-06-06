@@ -1,6 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -11,6 +12,7 @@
 class Scene {
 public:
     explicit Scene(sf::Font font, sf::RenderWindow* p_window, const wchar_t* p_scene_label);
+    explicit Scene(sf::RenderWindow* p_window, const wchar_t* p_scene_label);
     virtual ~Scene() = default;
 
 public:
@@ -32,11 +34,16 @@ public:
     unsigned int getWindowWidth()const;
     unsigned int getWindowHeight()const;
 
+    static sf::Font& getDefaultFont();
+
 protected:
     static void resetSound(sf::Sound*& p_sound, const sf::SoundBuffer& sound_buffer, bool loop = false, bool play_now = false);
     static void freeSound(sf::Sound*& p_sound, bool async_wait_finished = false);
     void drawTexture(const sf::Vector2f& draw_pos, const sf::Texture& texture) const;
     void drawTexture(const Camera& camera, sf::Vector2f draw_pos, const sf::Texture& texture) const;
+    void drawTexture(const sf::Vector2f& pos, float width, float height, const sf::Texture& texture, bool width_flipped = false) const;
+    void drawTextWithShaded(const sf::Vector2f& pos, const sf::Text& text) const;
+
 private:
     sf::Font base_font_;
     sf::RenderWindow* p_window_;

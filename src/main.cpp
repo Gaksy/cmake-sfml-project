@@ -97,6 +97,9 @@ sf::Texture img_avatar_sunflower;     // 龙日葵头像图片
 // 音频管理器
 SoundManager game_sound_manager;
 
+// 字体
+sf::Font default_font("resources/font_file/NISC18030.ttf");
+
 Scene* p_menu_scene = nullptr;
 Scene* p_game_scene = nullptr;
 Scene* p_selector_scene = nullptr;
@@ -123,6 +126,12 @@ void loadGameResources()
     flipTextureHorizontally(&img_1P_selector_btn_idle_right, &img_1P_selector_btn_idle_left);                                                // 1P 向左选择按钮默认状态图片
     loadTextureFromFile(&img_1P_selector_btn_down_right, "resources/game_file/1p_selector_btn_down.png");                           // 1P 向右选择按钮默认状态图片
     flipTextureHorizontally(&img_1P_selector_btn_down_right, &img_1P_selector_btn_down_left);                                                // 1P 向左选择按钮按下状态图片
+
+    loadTextureFromFile(&img_2P_selector_btn_idle_right, "resources/game_file/2p_selector_btn_idle.png");                           // 1P 向右选择按钮默认状态图片
+    flipTextureHorizontally(&img_2P_selector_btn_idle_right, &img_2P_selector_btn_idle_left);                                                // 1P 向左选择按钮默认状态图片
+    loadTextureFromFile(&img_2P_selector_btn_down_right, "resources/game_file/2p_selector_btn_down.png");                           // 1P 向右选择按钮默认状态图片
+    flipTextureHorizontally(&img_2P_selector_btn_down_right, &img_2P_selector_btn_down_left);                                                // 1P 向左选择按钮按下状态图片
+
     loadTextureFromFile(&img_peashooter_selector_background_right, "resources/game_file/peashooter_selector_background.png");       // 选角界面朝向右的婉逗射手背景图片
     flipTextureHorizontally(&img_peashooter_selector_background_right, &img_peashooter_selector_background_left);                            // 选角界面朝向左的婉逗射手背景图片
     loadTextureFromFile(&img_sunflower_selector_background_right, "resources/game_file/sunflower_selector_background.png");         // 选角界面朝向右的龙日葵背景图片
@@ -186,6 +195,7 @@ void loadGameResources()
     game_sound_manager.loadSound("resources/game_file/pea_shoot_2.mp3", "pea_shoot_2");
     game_sound_manager.loadSound("resources/game_file/pea_shoot_ex.mp3", "pea_shoot_ex");
     game_sound_manager.loadSound("resources/game_file/ui_confirm.wav", "ui_confirm");
+    game_sound_manager.loadSound("resources/game_file/ui_switch.wav", "ui_switch");
 }
 
 int main()
@@ -199,13 +209,12 @@ int main()
     window.display();
 
     // loadfile
-    const sf::Font font("resources/font_file/NISC18030.ttf");
     loadGameResources();
 
     // init scene
-    p_menu_scene = new MenuScene(font, &window);
-    p_selector_scene = new SelectorScene(font, &window);
-    p_game_scene = new GameScene(font, &window);
+    p_menu_scene = new MenuScene(&window);
+    p_selector_scene = new SelectorScene(&window);
+    p_game_scene = new GameScene(&window);
     game_scene_manager.setCurrentScene(p_menu_scene);
 
     // 计时

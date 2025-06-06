@@ -1,16 +1,19 @@
 #ifndef SECECTORSCENE_H
 #define SECECTORSCENE_H
 
-#include <SFML/Graphics/Font.hpp>
 #include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "Scene/Scene.h"
 #include "ResourcesUnit/Animation.h"
 
+
 class SelectorScene: public Scene {
 public:
     SelectorScene(const sf::Font& font, sf::RenderWindow* p_window);
+    explicit SelectorScene(sf::RenderWindow* p_window);
     ~SelectorScene() override=default;
 
 public:
@@ -50,6 +53,16 @@ private:
 
     PlayerType player_type_1;
     PlayerType player_type_2;
+
+    sf::Text str_peashooter_name_;
+    sf::Text str_sunflower_name_;
+
+    float selector_background_scroll_offset_x_;
+
+    bool is_btn_1P_left_down = false;
+    bool is_btn_1P_right_down = false;
+    bool is_btn_2P_left_down = false;
+    bool is_btn_2P_right_down = false;
 };
 
 #endif //SECECTORSCENE_H

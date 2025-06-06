@@ -16,13 +16,18 @@ MenuScene::MenuScene(const sf::Font& font, sf::RenderWindow* p_window):
     animation_peashooter_run_right_(p_window)
 { ; }
 
+MenuScene::MenuScene(sf::RenderWindow* p_window):
+    Scene(p_window, L"菜单场景"),
+    animation_peashooter_run_right_(p_window)
+{ ; }
+
 void MenuScene::onEnter() {
     game_sound_manager.setSoundLoop("bgm_menu", true);
     game_sound_manager.playSound("bgm_menu");
 }
 
 void MenuScene::onExit() {
-    game_sound_manager.stopSound("bgm_menu");
+    // game_sound_manager.stopSound("bgm_menu");
 }
 
 void MenuScene::onUpdate(const size_t delta) {
