@@ -37,6 +37,9 @@ void GameScene::onEnter() {
     const unsigned int width = getWindowWidth();
     const unsigned int height = getWindowHeight();
 
+    p_player_1->setPosition({200, 50});
+    p_player_2->setPosition({975, 50});
+
     pos_img_sky_.x = (static_cast<float>(width) - static_cast<float>(img_sky.getSize().x)) / 2.0f;
     pos_img_sky_.y = (static_cast<float>(height) - static_cast<float>(img_sky.getSize().y)) / 2.0f;
 
@@ -120,8 +123,10 @@ void GameScene::onInput(const sf::Event& event) {
         case sf::Keyboard::Key::Q:
             is_debug = !is_debug;
             break;
-        default:
+        case sf::Keyboard::Key::Escape:
             game_scene_manager.switchToScene(SceneManager::SceneType::MENU);
+            break;
+        default:
             break;
         }
     }

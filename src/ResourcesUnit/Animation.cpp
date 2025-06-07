@@ -11,7 +11,7 @@ extern sf::RenderWindow window;
 Animation::Animation():
     timer_(0),
     index_frame_(0),
-    is_loop_(false),
+    is_loop_(true),
     interval_(0),
     p_window_(&window),
     p_atlas_(nullptr)

@@ -168,7 +168,7 @@ void SelectorScene::onExit() {
             p_player_2 = new SunflowerPlayer();
             break;
     }
-    p_player_1->setPlayerID(PlayerID::P2);
+    p_player_2->setPlayerID(PlayerID::P2);
 }
 
 void SelectorScene::onUpdate(const size_t delta) {
