@@ -13,4 +13,5 @@ void drawTexture(const sf::Vector2f& pos, float width, float height, const sf::T
 void drawTextWithShaded(const sf::Vector2f& pos, const sf::Text& text);
 void drawLine(const Camera& camera, sf::Vector2f pos_1, sf::Vector2f pos_2, sf::Color color = sf::Color::Red);
 void drawText(const sf::Vector2f& pos, const char* str, size_t size = 16, const sf::Color& color = sf::Color::Red);
+
 #endif //MAINDRAWUTIL_H

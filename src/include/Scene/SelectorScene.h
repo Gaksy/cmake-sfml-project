@@ -12,8 +12,8 @@
 
 class SelectorScene: public Scene {
 public:
-    SelectorScene(const sf::Font& font, sf::RenderWindow* p_window);
-    explicit SelectorScene(sf::RenderWindow* p_window);
+    explicit SelectorScene(const sf::Font& font);
+    explicit SelectorScene();
     ~SelectorScene() override=default;
 
 public:

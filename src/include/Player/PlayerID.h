@@ -1,0 +1,9 @@
+#ifndef SRC_INCLUDE_PLAYER_PLAYERID_H
+#define SRC_INCLUDE_PLAYER_PLAYERID_H
+
+enum class PlayerID{
+    P1,
+    P2
+};
+
+#endif //SRC_INCLUDE_PLAYER_PLAYERID_H

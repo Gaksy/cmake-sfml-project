@@ -227,9 +227,9 @@ int main()
     loadGameResources();
 
     // init scene
-    p_menu_scene = new MenuScene(&window);
-    p_selector_scene = new SelectorScene(&window);
-    p_game_scene = new GameScene(&window);
+    p_menu_scene = new MenuScene();
+    p_selector_scene = new SelectorScene();
+    p_game_scene = new GameScene();
     game_scene_manager.setCurrentScene(p_menu_scene);
 
     // 计时

@@ -10,8 +10,8 @@
 class GameScene : public Scene
 {
 public:
-    GameScene(const sf::Font& font, sf::RenderWindow* p_window);
-    explicit GameScene(sf::RenderWindow* p_window);
+    explicit GameScene(const sf::Font& font);
+    explicit GameScene();
     ~GameScene() override;
 
 public:

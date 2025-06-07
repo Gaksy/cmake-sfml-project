@@ -10,7 +10,7 @@ namespace sf {
 
 class Animation {
 public:
-    explicit Animation(sf::RenderWindow* p_window);
+    explicit Animation();
     ~Animation() = default;
 
 public:

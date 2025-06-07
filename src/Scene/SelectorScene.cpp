@@ -46,8 +46,8 @@ extern SceneManager game_scene_manager;
 extern Player* p_player_1;
 extern Player* p_player_2;
 
-SelectorScene::SelectorScene(const sf::Font& font, sf::RenderWindow* p_window):
-    Scene(font, p_window, L"选角场景"),
+SelectorScene::SelectorScene(const sf::Font& font):
+    Scene(font, L"选角场景"),
     pos_img_VS_({0,0}),
     pos_img_tip_({0,0}),
     pos_img_1P_({0,0}),
@@ -64,8 +64,6 @@ SelectorScene::SelectorScene(const sf::Font& font, sf::RenderWindow* p_window):
     pos_img_1P_selector_btn_right_({0,0}),
     pos_img_2P_selector_btn_left_({0,0}),
     pos_img_2P_selector_btn_right_({0,0}),
-    animation_peashooter(p_window),
-    animation_sunflower(p_window),
     player_type_1(PlayerType::Peashooter),
     player_type_2(PlayerType::Sunflower),
     str_peashooter_name_(font, L"婉豆射手", 16),
@@ -73,8 +71,8 @@ SelectorScene::SelectorScene(const sf::Font& font, sf::RenderWindow* p_window):
     selector_background_scroll_offset_x_(0)
 { ; }
 
-SelectorScene::SelectorScene(sf::RenderWindow* p_window):
-    Scene(p_window, L"选角场景"),
+SelectorScene::SelectorScene():
+    Scene(L"选角场景"),
     pos_img_VS_({0,0}),
     pos_img_tip_({0,0}),
     pos_img_1P_({0,0}),
@@ -91,8 +89,6 @@ SelectorScene::SelectorScene(sf::RenderWindow* p_window):
     pos_img_1P_selector_btn_right_({0,0}),
     pos_img_2P_selector_btn_left_({0,0}),
     pos_img_2P_selector_btn_right_({0,0}),
-    animation_peashooter(p_window),
-    animation_sunflower(p_window),
     player_type_1(PlayerType::Peashooter),
     player_type_2(PlayerType::Sunflower),
     str_peashooter_name_(getDefaultFont(), L"婉豆射手", 16),
@@ -159,6 +155,7 @@ void SelectorScene::onExit() {
             p_player_1 = new PeashooterPlayer();
             break;
     }
+    p_player_1->setPlayerID(PlayerID::P1);
 
     switch (player_type_2) {
         case PlayerType::Peashooter:
@@ -171,7 +168,7 @@ void SelectorScene::onExit() {
             p_player_2 = new SunflowerPlayer();
             break;
     }
-
+    p_player_1->setPlayerID(PlayerID::P2);
 }
 
 void SelectorScene::onUpdate(const size_t delta) {

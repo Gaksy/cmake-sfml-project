@@ -32,6 +32,8 @@ add_executable(${PROJECT_NAME}
         src/Player/Player.cpp
         src/Player/PeashooterPlayer.cpp
         src/Player/SunflowerPlayer.cpp
+        src/include/Player/PlayerID.h
+        src/include/Player/PlayerID.h
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)

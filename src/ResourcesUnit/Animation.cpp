@@ -6,12 +6,14 @@
 
 #include "Util/Camera.h"
 
-Animation::Animation(sf::RenderWindow* p_window):
+extern sf::RenderWindow window;
+
+Animation::Animation():
     timer_(0),
     index_frame_(0),
     is_loop_(false),
     interval_(0),
-    p_window_(p_window),
+    p_window_(&window),
     p_atlas_(nullptr)
 { ; }
 
@@ -66,11 +68,13 @@ void Animation::onUpdate(const size_t delta)
 
 void Animation::onDraw(const Camera& camera, const float x, const float y) const
 {
-    onDraw(x - camera.getPosition().x, y - camera.getPosition().y);
+    if (p_window_)
+        onDraw(x - camera.getPosition().x, y - camera.getPosition().y);
 }
 
 void Animation::onDraw(float x, float y) const
 {
+    if (!p_window_) return;
     const sf::Texture* texture = p_atlas_->getFrameImage(index_frame_);
 
     if (texture != nullptr) {

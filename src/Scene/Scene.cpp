@@ -10,16 +10,17 @@
 #include "SFML/Graphics/Sprite.hpp"
 
 extern sf::Font default_font;
+extern sf::RenderWindow window;
 
-Scene::Scene(sf::Font font, sf::RenderWindow* p_window, const wchar_t* const p_scene_label):
+Scene::Scene(sf::Font font, const wchar_t* const p_scene_label):
     base_font_(std::move(font)),
-    p_window_(p_window),
+    p_window_(&window),
     p_scene_label_(p_scene_label)
 { ; }
 
-Scene::Scene(sf::RenderWindow* p_window, const wchar_t* p_scene_label):
+Scene::Scene(const wchar_t* p_scene_label):
     base_font_(getDefaultFont()),
-    p_window_(p_window),
+    p_window_(&window),
     p_scene_label_(p_scene_label)
 { ; }
 

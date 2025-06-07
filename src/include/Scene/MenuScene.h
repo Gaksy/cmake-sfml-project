@@ -12,8 +12,8 @@
 
 class MenuScene: public Scene{
 public:
-    MenuScene(const sf::Font& font, sf::RenderWindow* p_window);
-    explicit MenuScene(sf::RenderWindow* p_window);
+    explicit MenuScene(const sf::Font& font);
+    explicit MenuScene();
     ~MenuScene() override=default;
 
 public:

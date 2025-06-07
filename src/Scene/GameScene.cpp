@@ -21,12 +21,12 @@ extern Camera main_camera;
 extern Player* p_player_1;
 extern Player* p_player_2;
 
-GameScene::GameScene(const sf::Font& font, sf::RenderWindow* p_window):
-    Scene(font, p_window, L"游戏局内场景")
+GameScene::GameScene(const sf::Font& font):
+    Scene(font, L"游戏局内场景")
 { ; }
 
-GameScene::GameScene(sf::RenderWindow* p_window):
-    Scene(p_window, L"游戏局内场景")
+GameScene::GameScene():
+    Scene( L"游戏局内场景")
 { ; }
 
 GameScene::~GameScene() {
@@ -104,9 +104,15 @@ void GameScene::onDraw(const Camera& camera) {
     if (is_debug) {
         drawText({15, 15}, L"已开启调试模式");
     }
+
+    p_player_1->onDraw(camera);
+    p_player_2->onDraw(camera);
 }
 
 void GameScene::onInput(const sf::Event& event) {
+    p_player_1->onInput(event);
+    p_player_2->onInput(event);
+
     if (event.is<sf::Event::KeyPressed>()) {
 
         switch (event.getIf<sf::Event::KeyPressed>()->code)

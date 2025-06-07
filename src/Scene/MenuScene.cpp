@@ -11,14 +11,12 @@ extern SceneManager game_scene_manager;
 extern sf::Texture img_menu_background;
 extern SoundManager game_sound_manager;
 
-MenuScene::MenuScene(const sf::Font& font, sf::RenderWindow* p_window):
-    Scene(font, p_window, L"菜单场景"),
-    animation_peashooter_run_right_(p_window)
+MenuScene::MenuScene(const sf::Font& font):
+    Scene(font, L"菜单场景")
 { ; }
 
-MenuScene::MenuScene(sf::RenderWindow* p_window):
-    Scene(p_window, L"菜单场景"),
-    animation_peashooter_run_right_(p_window)
+MenuScene::MenuScene():
+    Scene(L"菜单场景")
 { ; }
 
 void MenuScene::onEnter() {

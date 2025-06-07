@@ -10,7 +10,7 @@ public:
     ~PeashooterPlayer() override = default;
 
     void onUpdate(size_t delta)override;
-    void onDraw(const Camera& camera, sf::RenderWindow& window) override;
+    void onDraw(const Camera& camera) override;
     void onInput(const sf::Event& event) override;
 
 private:

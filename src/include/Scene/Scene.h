@@ -11,8 +11,8 @@
 
 class Scene {
 public:
-    explicit Scene(sf::Font font, sf::RenderWindow* p_window, const wchar_t* p_scene_label);
-    explicit Scene(sf::RenderWindow* p_window, const wchar_t* p_scene_label);
+    explicit Scene(sf::Font font, const wchar_t* p_scene_label);
+    explicit Scene(const wchar_t* p_scene_label);
     virtual ~Scene() = default;
 
 public:
