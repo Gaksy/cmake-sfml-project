@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio/SoundBuffer.hpp>
 
+#include "Player/Player.h"
 #include "ResourcesUnit/ResourcesUtil.h"
 #include "ResourcesUnit/Atlas.h"
 #include "ResourcesUnit/SoundManager.h"
@@ -111,6 +112,10 @@ std::vector<Platform> platform_list;
 Scene* p_menu_scene = nullptr;
 Scene* p_game_scene = nullptr;
 Scene* p_selector_scene = nullptr;
+
+// 玩家
+Player* p_player_1 = nullptr;
+Player* p_player_2 = nullptr;
 
 SceneManager game_scene_manager;
 

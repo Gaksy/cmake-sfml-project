@@ -1,7 +1,12 @@
 #include "Scene/SelectorScene.h"
 
+#include "Player/Player.h"
+#include "Player/PeashooterPlayer.h"
+#include "Player/SunflowerPlayer.h"
+
 #include "ResourcesUnit/SoundManager.h"
 #include "Scene/SceneManager.h"
+
 
 extern sf::Texture img_VS;                                       // VS 艺术字图片
 extern sf::Texture img_1P;                                       // 1P 文本图片
@@ -37,6 +42,9 @@ extern Atlas atlas_sunflower_idle_right;
 
 extern SoundManager game_sound_manager;
 extern SceneManager game_scene_manager;
+
+extern Player* p_player_1;
+extern Player* p_player_2;
 
 SelectorScene::SelectorScene(const sf::Font& font, sf::RenderWindow* p_window):
     Scene(font, p_window, L"选角场景"),
@@ -140,7 +148,30 @@ void SelectorScene::onEnter() {
 }
 
 void SelectorScene::onExit() {
-    printf("退出选角场景\n");
+    switch (player_type_1) {
+        case PlayerType::Peashooter:
+            p_player_1 = new PeashooterPlayer();
+            break;
+        case PlayerType::Sunflower:
+            p_player_1 = new SunflowerPlayer();
+            break;
+        default:
+            p_player_1 = new PeashooterPlayer();
+            break;
+    }
+
+    switch (player_type_2) {
+        case PlayerType::Peashooter:
+            p_player_2 = new PeashooterPlayer();
+            break;
+        case PlayerType::Sunflower:
+            p_player_2 = new SunflowerPlayer();
+            break;
+        default:
+            p_player_2 = new SunflowerPlayer();
+            break;
+    }
+
 }
 
 void SelectorScene::onUpdate(const size_t delta) {

@@ -29,12 +29,9 @@ add_executable(${PROJECT_NAME}
         src/Scene/GameScene.cpp
         src/Scene/SceneManager.cpp
         src/Scene/SelectorScene.cpp
-        src/include/Player/Player.cpp
-        src/include/Player/Player.h
-        src/include/Player/PeashooterPlayer.cpp
-        src/include/Player/PeashooterPlayer.h
-        src/include/Player/SunflowerPlayer.cpp
-        src/include/Player/SunflowerPlayer.h
+        src/Player/Player.cpp
+        src/Player/PeashooterPlayer.cpp
+        src/Player/SunflowerPlayer.cpp
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src/include)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)

@@ -1,6 +1,8 @@
 #include "Scene/GameScene.h"
 
 #include <vector>
+
+#include "Player/Player.h"
 #include "Util/Platform.h"
 #include "Scene/SceneManager.h"
 
@@ -15,6 +17,9 @@ extern std::vector<Platform> platform_list;
 
 extern SceneManager game_scene_manager;
 extern Camera main_camera;
+
+extern Player* p_player_1;
+extern Player* p_player_2;
 
 GameScene::GameScene(const sf::Font& font, sf::RenderWindow* p_window):
     Scene(font, p_window, L"游戏局内场景")
@@ -84,7 +89,8 @@ void GameScene::onExit() {
 }
 
 void GameScene::onUpdate(const size_t delta) {
-
+    p_player_1->onUpdate(delta);
+    p_player_2->onUpdate(delta);
 }
 
 void GameScene::onDraw(const Camera& camera) {
