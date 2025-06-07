@@ -1,8 +1,6 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
-#include <mach/processor.h>
-
 #include "ResourcesUnit/Atlas.h"
 #include "Util/Camera.h"
 
